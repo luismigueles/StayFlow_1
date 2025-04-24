@@ -30,7 +30,6 @@
                     <li><a href="{{ url('/') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reservas</a></li>  
                     <li><a href="{{ url('/huespedes') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Huéspedes</a></li>
                     <li><a href="{{ url('/empleados') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Empleados</a></li>   
-                    <li><a href="{{ url('/') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Tareas</a></li>
                 </ul>
             </div>
         </li>
@@ -43,7 +42,6 @@
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a href="{{ url('/') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Tipo de empleado</a></li> 
                     <li><a href="{{ url('/') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Tipo de Habitación</a></li>  
-                    <li><a href="{{ url('/') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Tipo de Tarea</a></li>
                 </ul>
             </div>
         </li>

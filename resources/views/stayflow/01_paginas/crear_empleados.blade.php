@@ -10,7 +10,7 @@
         @include('stayflow.03_componentes.menu_lateral')
     </aside>
     <section class="container">
-        <h1>Registrar Huesped</h1>
+        <h1>Registrar Empleado</h1>
 
         <!-- Verificar si hay algún mensaje de éxito -->
         @if(session('success'))
@@ -31,17 +31,17 @@
             </div>
 
             <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="text" class="form-control @error('telefono') is-invalid @enderror" id="telefono" name="telefono" value="{{ old('telefono') }}" required>
-                @error('telefono')
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control @error('apellido') is-invalid @enderror" id="apellido" name="apellido" value="{{ old('apellido') }}" required>
+                @error('apellido')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
-                @error('email')
+                <label for="password">Password</label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password') }}" required>
+                @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
@@ -52,5 +52,3 @@
      @include('stayflow.03_componentes.iconos')
 <main>
 @endsection
-
-

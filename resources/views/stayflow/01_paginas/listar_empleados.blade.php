@@ -13,7 +13,7 @@
            
 
             <article class="container">
-                <a href="{{ url('/huespedes/create') }}">crear nuevo huesped</a>
+                <a href="{{ url('/empleados/create') }}">crear nuevo empleado</a>
                 @include('stayflow.03_componentes.table')
             </article>
         </section>

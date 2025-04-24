@@ -17,7 +17,7 @@
 
 
 <article class="container">
-    <h1>{{$accion}} Huesped</h1>
+    <h1>{{$accion}} Empleado</h1>
 
     <!-- Verificar si hay algún mensaje de éxito -->
     @if(session('success'))
@@ -39,17 +39,17 @@
         </div>
 
         <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input type="text" class="form-control @error('telefono') is-invalid @enderror" id="telefono" name="telefono" value="{{ $data->telefono }}" required>
-            @error('telefono')
+            <label for="apellidos">Apellidos</label>
+            <input type="text" class="form-control @error('apellidos') is-invalid @enderror" id="apellidos" name="apellidos" value="{{ $data->apellidos }}" required>
+            @error('apellidos')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
 
         <div class="form-group">
-            <label for="email">Correo Electrónico</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ $data->email }}" required>
-            @error('email')
+            <label for="password">Password</label>
+            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ $data->password }}" required>
+            @error('password')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

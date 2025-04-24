@@ -3,16 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleados;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class EmpleadosController extends Controller
+class empleadosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        print "empleados".'<br />';;
+
+        $empleados = Empleados::get();
+        foreach ($empleados as $empleado) {
+
+            echo $empleado->nombre.'<br />';
+            echo $empleado->telefono.'<br />';
+            echo $empleado->email.'<br />';
+            //echo $empleado->id_tipo_empleado.'<br />';  falta clave foranea
+            echo "<hr />";
+        
+        }
+    
+        print "<a href='./empleados/create'>crear nuevo empleado</a>";
+        return view('stayflow.01_paginas.listar_empleados', [
+            'title' => 'Empleados',
+            'data' => $empleados
+        ]);
     }
 
     /**
@@ -20,7 +38,7 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        //
+        return view('stayflow.01_paginas.crear_empleados', ['title' => 'crear empleados']);
     }
 
     /**
@@ -28,7 +46,14 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empleado = new Empleados;
+        $empleado->nombre = $request->nombre;
+        $empleado->apellidos = $request->apellidos;
+        $empleado->password = $request->password;
+        //$empleado->id_tipo_empleado = $request->id_tipo_empleado; Clave foranea 
+
+        $empleado->save();
+        return redirect('/empleados');
     }
 
     /**
@@ -36,7 +61,13 @@ class EmpleadosController extends Controller
      */
     public function show(Empleados $empleados)
     {
-        //
+        $empleado = Empleados::where('id_empleado', $id)->first();
+        return view('stayflow.01_paginas.mostrar_editar_empleado', [
+            'title' => 'Empleados',
+            'data' => $empleado,
+            'accion' => 'mostrar',
+            'ruta' => 'huespedes/'.$id.'/show'
+        ]);
     }
 
     /**
@@ -44,7 +75,14 @@ class EmpleadosController extends Controller
      */
     public function edit(Empleados $empleados)
     {
-        //
+        $empleado = Empleados::find($id);
+        //print_r($huesped);
+        return view('stayflow.01_paginas.mostrar_editar_empleado', [
+            'title' => 'Empleado',
+            'data' => $empleado,
+            'accion' => 'editar',
+            'ruta' => '../'.$id
+        ]);
     }
 
     /**
@@ -52,7 +90,13 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, Empleados $empleados)
     {
-        //
+        $empleado = Empleados::find($id);
+        $empleado->nombre = $request->nombre;
+        $empleado->apellidos = $request->apellidos;
+        $empleado->password = $request->password;
+        //$empleado->id_tipo_empleado = $request->d_tipo_empleado; Clave foranea
+        $empleado->save();        
+        return redirect('/empleados');
     }
 
     /**
@@ -60,6 +104,9 @@ class EmpleadosController extends Controller
      */
     public function destroy(Empleados $empleados)
     {
-        //
+        $empleado = Empleados::find($id);
+        $empleado->delete();
+
+        return redirect('/empleados');
     }
 }

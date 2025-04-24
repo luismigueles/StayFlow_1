@@ -16,9 +16,9 @@
       <td>{{ $datum->telefono}}</td>
       <td>{{ $datum->email}}</td>
       <td>
-        <a href='huespedes/{{$datum->id_huesped}}/edit'>editar</a>
-        <a href='huespedes/{{$datum->id_huesped}}'>borrar</a>
-      
+        <a href='huespedes/{{$datum->id_huesped}}/edit'>editar</a>        
+        <a href="huespedes/{{$datum->id_huesped}}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">borrar</a>
+        <form id="delete-form" action="huespedes/{{$datum->id_huesped}}" method="POST" class="d-none"> @csrf  @method('DELETE')</form>
     </td>
     </tr>
     @endforeach

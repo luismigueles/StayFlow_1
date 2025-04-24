@@ -39,7 +39,7 @@ class huespedesController extends Controller
      */
     public function create()
     {
-        return view('stayflow.huespedes', ['title' => 'crear huspedes']);
+        return view('stayflow.01_paginas.crear_huespedes', ['title' => 'crear huspedes']);
     }
 
     /**
@@ -75,13 +75,13 @@ class huespedesController extends Controller
      */
     public function edit(string $id)
     {
-        $huesped = Huespedes::where('id_huesped', $id)->first();
-        print_r($huesped);
+        $huesped = Huespedes::find($id);
+        //print_r($huesped);
         return view('stayflow.01_paginas.mostrar_editar_huesped', [
             'title' => 'Huespedes',
             'data' => $huesped,
             'accion' => 'editar',
-            'ruta' => '../'
+            'ruta' => '../'.$id
         ]);
     }
 
@@ -90,10 +90,11 @@ class huespedesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->huesped()->fill($request->validated());
-        $request->huesped()->save();
-
-        
+        $huesped = Huespedes::find($id);
+        $huesped->nombre = $request->nombre;
+        $huesped->email = $request->email;
+        $huesped->telefono = $request->telefono;
+        $huesped->save();        
         return redirect('/huespedes');
     }
 
@@ -102,6 +103,12 @@ class huespedesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
+    
+        $huesped = Huespedes::find($id);
+        $huesped->delete();
+
+        return redirect('/huespedes');
+    
     }
 }
